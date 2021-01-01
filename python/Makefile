@@ -1,13 +1,14 @@
-.PHONY: install test
-
 default: test
 
+.PHONY: install
 install:
-	ip install -r requirements.txt
+	pip install -r requirements.txt
 
+.PHONY: fix
 fix:
 	isort .
 	black .
 
-test:
+.PHONY: test
+test: fix
 	python -m pytest
