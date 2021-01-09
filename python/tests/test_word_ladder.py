@@ -26,6 +26,32 @@ def test_ladderLength():
         )
         == 2
     )
+    assert (
+        Solution().ladderLength(
+            beginWord="hot",
+            endWord="dog",
+            wordList=["hot", "dog"],
+        )
+        == 0
+    )
+    assert (
+        Solution().ladderLength(
+            "hot",
+            "dog",
+            ["hot", "cog", "dog", "tot", "hog", "hop", "pot", "dot"],
+        )
+        == 3
+    )
+    assert (
+        Solution().ladderLength(
+            "hit",
+            "cog",
+            ["hot", "hit", "cog", "dot", "dog"],
+        )
+        == 5
+    )
 
+
+def test_check():
     assert Solution().check("hit", "hot") == True
     assert Solution().check("hit", "hog") == False
