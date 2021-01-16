@@ -1,15 +1,15 @@
-from typing import List, Set
+from typing import List, Set, Tuple
 
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n: int = len(nums)
-        ans: List[List[int]] = []
         if n < 3:
-            return ans
+            return []
         nums.sort()
-        pair: Set[int] = set()
-        for i in range(n):
+        ans: List[List[int]] = []
+        pairs: Set[int] = set()
+        for i in range(0, n - 2):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
 
@@ -19,9 +19,10 @@ class Solution:
 
                 total_sum: int = nums[i] + nums[lp] + nums[rp]
                 if total_sum == 0:
-                    if not ((nums[i], nums[lp]) in pair):
+                    pair: Tuple[int, int] = (nums[i], nums[lp])
+                    if not (pair in pairs):
                         ans.append([nums[i], nums[lp], nums[rp]])
-                        pair.add((nums[i], nums[lp]))
+                        pairs.add(pair)
                     lp += 1
                     rp -= 1
                 elif total_sum > 0:
