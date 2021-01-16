@@ -10,9 +10,13 @@ class Solution:
         nums.sort()
         pair: Set[int] = set()
         for i in range(n):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
             lp: int = i + 1
             rp: int = n - 1
             while lp < rp:
+
                 total_sum: int = nums[i] + nums[lp] + nums[rp]
                 if total_sum == 0:
                     if not ((nums[i], nums[lp]) in pair):
@@ -24,8 +28,5 @@ class Solution:
                     rp -= 1
                 else:
                     lp += 1
-
-            while i < n - 1 and nums[i] == nums[i + 1]:
-                i += 1
 
         return ans
