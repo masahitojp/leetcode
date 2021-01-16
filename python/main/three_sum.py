@@ -18,13 +18,8 @@ class Solution:
                     if not ((nums[i], nums[lp]) in pair):
                         ans.append([nums[i], nums[lp], nums[rp]])
                         pair.add((nums[i], nums[lp]))
-                    l_num: int = nums[lp]
-                    while lp < n - 1 and l_num == nums[lp]:
-                        lp += 1
-
-                    r_num: int = nums[rp]
-                    while lp < rp and nums[rp] == r_num:
-                        rp -= 1
+                    lp += 1
+                    rp -= 1
                 elif total_sum > 0:
                     rp -= 1
                 else:
